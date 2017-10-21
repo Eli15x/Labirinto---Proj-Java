@@ -6,8 +6,8 @@ public class LabirintoPrograma{
 	public static void main(String[] args){
 
     	char[][] labirinto;
-    	int TotalLinha = 0;  //elas estar„o contando apartir de 1...(n„o estar· na logica do vetor... onse a posicao inicial È 0 e nela È armazenada...)
-    	int TotalColuna= 0;  //elas estar„o contando apartir de 1...(n„o estar· na logica do vetor... onse a posicao inicial È 0 e nela È armazenada...)
+    	int TotalLinha = 0;  //elas estar√£o contando apartir de 1...(n√£o estar√° na logica do vetor... onse a posicao inicial √© 0 e nela √© armazenada...)
+    	int TotalColuna= 0;  //elas estar√£o contando apartir de 1...(n√£o estar√° na logica do vetor... onse a posicao inicial √© 0 e nela √© armazenada...)
 
        // LENDO O ARQUIVO.
         try {
@@ -51,7 +51,7 @@ public class LabirintoPrograma{
         labirinto = new char[TotalLinha][TotalColuna];
 
 
-        //Colocar informaÁıes na matriz e printar...
+        //Colocar informa√ß√µes na matriz e printar...
         int ContagemLinha = 0;
 
         while (arquivo.ready()){
@@ -60,13 +60,13 @@ public class LabirintoPrograma{
 
 	        for(int coluna = 0; coluna <= TotalColuna-1; coluna++)
 	            labirinto[ContagemLinha][coluna] = componente.charAt(coluna); //pegando cada char da linha para colocar na posicao da matriz adequada.
-           //ele comeÁara com a ContagemLinha q˙e È o int que declarei acima, ela funciona para saber de qual linha estou tratando...
+           //ele come√ßara com a ContagemLinha q√∫e √© o int que declarei acima, ela funciona para saber de qual linha estou tratando...
            //para poder aramazenar os dados corretamente conforme o arquivo txt...
 
             for(int coluna = 0; coluna <= TotalColuna-1; coluna++)
             	System.out.print(labirinto[ContagemLinha][coluna] );
             System.out.println("");
-            ContagemLinha++; //agora estou indo para prÛxima linha pois todos os character da linha j· foram pegos.
+            ContagemLinha++; //agora estou indo para pr√≥xima linha pois todos os character da linha j√° foram pegos.
 
 		 }
 
@@ -79,11 +79,27 @@ public class LabirintoPrograma{
 
          if(procedimentos.ConferirCaracteres() ){ //se encontrado E e Se encontrado S
 
-		 Coordenada Coord = new Coordenada();
-         Coord.setLinha(procedimentos.PosicaoInicialLinha());   //recebedo a linha inicial onde est· E
-         Coord.setColuna(procedimentos.PosicaoInicialColuna()); // recebendo a coluna incial onde est· S
-         caminho.empilhe(Coord); //empilhar· a primeira posicao
+	 		Coordenada Coord = new Coordenada();
+         		Coord.setLinha(procedimentos.PosicaoInicialLinha());   //recebedo a linha inicial onde est√° E
+         		Coord.setColuna(procedimentos.PosicaoInicialColuna()); // recebendo a coluna incial onde est√° S
+         		caminho.empilhe(Coord); //empilhar√° a primeira posicao
+			atual.setLinha(proc.linhaInicial());
+			atual.setColuna(proc.colunaInicial());
 
+			System.out.println(atual.toString());
+
+			Fila<Coordenada> fila = new Fila<Coordenada>(3); //esta enfileira as posicoes adjacentes a atual, direita, em cima, ou em baixo
+			proc.validaPosicao(atual.getLinha(),atual.getColuna());
+			//fila.enfileire(); //enfileirar a posicoes validas
+		//	atual.setColuna(2);
+
+			proc.colocarPasso(atual.getLinha(),atual.getColuna());
+			//atual.setLinha(3);
+			//proc.colocarPasso(atual.getLinha(),atual.getColuna());
+
+
+  
+	
 
 		}
 
@@ -91,19 +107,19 @@ public class LabirintoPrograma{
 	    }
 
 	    catch (FileNotFoundException e1){
-	    	System.out.println("N„o foi possivel encontrar o caminho especificado,Porfavor digite o nome correto,ou certifique-se se o arquivo existe");
+	    	System.out.println("N√£o foi possivel encontrar o caminho especificado,Porfavor digite o nome correto,ou certifique-se se o arquivo existe");
         }
         catch(ArrayIndexOutOfBoundsException e2){
-			System.out.println("N„o foi possÌvel realizar o procedimento de leitura com sucesso.");
-			System.out.println("Confira seu Arquivo texto,ele apressenta n˙mero de linhas ou colunas errado :(");
+			System.out.println("N√£o foi poss√≠vel realizar o procedimento de leitura com sucesso.");
+			System.out.println("Confira seu Arquivo texto,ele apressenta n√∫mero de linhas ou colunas errado :(");
 		}
 		catch(Exception e3){
 			System.out.println("Erro :"+ e3);
 	    }
 
-      /* Acabamos de ler o arquivo e colocar cada posiÁ„o na matriz...
+      /* Acabamos de ler o arquivo e colocar cada posi√ß√£o na matriz...
        Agora iremos estanciar os objetos da classe caso possuam E e S indicando o inicio do labirinto e o fim do labirinto.
-       Se n„o ira abortar e ira apontar o erro...
+       Se n√£o ira abortar e ira apontar o erro...
       */
 
 
