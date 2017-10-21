@@ -168,5 +168,32 @@ public boolean validaPosicao(int linha, int coluna)
        }
 	 return posicaoEValida;
 }
+   public void colocarPasso(int linha, int coluna) throws Exception
+   {
+	   	int aux = 0;
+		if(linha < 0 || linha > this.TotalLinha)
+			throw new Exception("Linha passada nao e valida");
 
+		if(coluna < 0 || coluna > this.TotalColuna)
+			throw new Exception("Coluna passa nao e valida");
+
+		this.labirinto[linha][coluna] = '*';
+
+
+		for(int l = 0; l < this.TotalLinha; l++)
+		{
+			for(int c = 0; c < this.TotalColuna; c++)
+			{
+		       	System.out.print(this.labirinto[l][c]);
+		    }
+
+			System.out.println("");
+		}
+
+
+
+   }
+
+
+	
 }
