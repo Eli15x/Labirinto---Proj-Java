@@ -33,7 +33,7 @@ int aux = 2;
 
 while(aux != 0){
 
-	if(Contador == this.TotalLinha-1) //se for a segunda vez.... pois de uma linha com coluna só irei consultar a primeira linha e a ultima
+	if(Contador == this.TotalLinha-1) //se for a segunda vez.... pois de uma linha com coluna sÃ³ irei consultar a primeira linha e a ultima
 		aux = 0;
 
 	for(int coluna = 0; coluna <= this.TotalColuna-1;coluna++){
@@ -52,16 +52,16 @@ while(aux != 0){
         }
 
     }
-       Contador = this.TotalLinha-1; //ele estará pegando a ultima linha que existe no labirinto -1 que é a ultima linha da minha matriz
+       Contador = this.TotalLinha-1; //ele estarÃ¡ pegando a ultima linha que existe no labirinto -1 que Ã© a ultima linha da minha matriz
         //pois minha matriz inicia com 0
  }
 
 	aux = 2;       //voltando o aux para 0
-	Contador = 0;  //voltando Contador para 0 para ser usado no próximo while... que será usado para conferir
+	Contador = 0;  //voltando Contador para 0 para ser usado no prÃ³ximo while... que serÃ¡ usado para conferir
 		           //as laterais da minha matriz.
   while(aux != 0){
 
-	if(Contador == this.TotalColuna-1) //se for a segunda vez.... pois  só irei consultar a primeira coluna e a ultima... que são
+	if(Contador == this.TotalColuna-1) //se for a segunda vez.... pois  sÃ³ irei consultar a primeira coluna e a ultima... que sÃ£o
 			//minhas laterais onde posso encontrar E e S.
 		aux = 0;
 
@@ -81,14 +81,14 @@ while(aux != 0){
 	    }
 
        }
-      Contador = this.TotalColuna-1; //ele estará pegando a ultima Coluna que existe no labirinto -1 que é a ultima linha da minha matriz
+      Contador = this.TotalColuna-1; //ele estarÃ¡ pegando a ultima Coluna que existe no labirinto -1 que Ã© a ultima linha da minha matriz
 	        //pois minha matriz inicia com 0
    }
 
     if((AchouS)&&(AchouE))
     	return true;
     else{
-	    throw new Exception ("Não foi encontrado O caracter E ou S em seu Arquivo,porfavor certifique-se se seu arquivo está digitado corretamente");
+	    throw new Exception ("NÃ£o foi encontrado O caracter E ou S em seu Arquivo,porfavor certifique-se se seu arquivo estÃ¡ digitado corretamente");
 	    }
 
 
@@ -113,25 +113,60 @@ public int PosicaoFinalLinha(){
 
 	return this.posicaoFinalLinha;
 }
+public boolean validaPosicao(int linha, int coluna)
+{
+	boolean posicaoEValida = false; //inicializando com false
+	//int linhaValida  = 0; //questao de iniciacao
+	//int colunaValida = 0;
+	//int linhaValida2 = 0; //Variaveis que pegaram os devidos valor e que serao armazenados na Fila
+	//int colunaValida2 = 0;
+	//int linhaValida3  = 0;
+	//int colunaValida3 = 0;
 
+	linha =  linha - 1; //linha anterior a passada no parametro, mas na mesma coluna
+	if(this.labirinto[linha][coluna] == '#')
+	{
+		posicaoEValida = false;
+		System.out.println(linha+", "+coluna+": Ha parede");
+	}
 
+	if(this.labirinto[linha][coluna] == ' ')
+	{
+		posicaoEValida = true;
+		System.out.println(-linha+", "+coluna+" : Ha espaco");
+		//linhaValida  = linha-1;
+		//colunaValida = coluna;
 
+  	}
+	coluna = coluna +1; //teremos a mesma linha da atual, mas levando em conta que a coluna e a seguinte
+	linha  = linha  +1; //eu tinha subtraido agora retornando a valor da linha do parametro
 
+	if(this.labirinto[linha][coluna] == '#')
+	{
+		posicaoEValida = false;
+		System.out.println(linha+" , "+coluna+": Ha parede");
+	}
 
+	if(this.labirinto[linha][coluna] == ' ')
+	{
+		posicaoEValida = true;
+		System.out.println(linha+" , "+coluna+" : Ha espaco");
+		//linhaValida2   = linha;
+		//colunaValida2  = coluna+1;
+	}
 
+	linha  = linha + 1;  //linha sucessora da armazena em atual
+	coluna = coluna - 1; //e na coluna anterior a passada como parametro, esgotando assim as possibilades
+       if(this.labirinto[linha][coluna] == '#')
+       {
+		posicaoEValida = false;
+		System.out.println(linha+", "+coluna+" : Ha parede");
+       }
+       if(this.labirinto[linha][coluna] == ' ')
+       {
+	       
+       }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	   return posicaoEValida;
+	}
 }
