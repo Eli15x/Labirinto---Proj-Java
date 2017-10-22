@@ -1,6 +1,6 @@
 
 /**
- * Classe com o proposio de instanciar e possibilitar a criaçao das coordenadas do labirinto
+ * Classe com o proposito de instanciar e possibilitar a criaçao das coordenadas do labirinto
  * @author @u15164 @17171  @17165 
  */
 public class Coordenada

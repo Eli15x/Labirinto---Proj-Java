@@ -1,5 +1,5 @@
 /**
- * Classe com o proposio de instanciar e possibilitar a criaçao da pilha do labirinto
+ * Classe com o proposito de instanciar e possibilitar a criaçao da pilha do labirinto
  * @author @u15164 @17171  @17165 
  * @param <X> recebe as coordenadas da classe coordenada
  */

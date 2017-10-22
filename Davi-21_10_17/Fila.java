@@ -1,5 +1,5 @@
 /**
- *  Classe com o proposio de instanciar e possibilitar a criaçao da fila do labirinto
+ *  Classe com o proposito de instanciar e possibilitar a criaçao da fila do labirinto
  * @author @u15164 @17165  @17171 
  * @param <X> recebe as coordenadas da classe coordenada
  */
@@ -114,8 +114,26 @@ public class Fila<X> implements Cloneable
  * @param x coordenada para ser enfileirada
  * @throws Exception caso seja nulo lança a excessao
  */
-   public void enfileire(X x) throws Exception
+   public void Armazenar(X x) throws Exception
    {
+       X[] armazem = null;
+       if(x==null)
+           throw new Exception("Parametro para armazenar invalido");
+       for(int atual = 0;atual<=3;atual++)
+       {     armazem[atual] = x;
+       X aux = armazem[atual];//para nao perder o conteudo
+       armazem[atual]=null;//apaga porem continua com 3 posicoes vazias
+       }
+    }
+   
+    public void ColocarAst()
+    {   
+      /* coloca * caso ja tenha passado pela posicao*/        
+    
+    }
+   
+   public void enfileire(X x) throws Exception
+   {       
    	  if(x==null)
    	  	throw new Exception("Paramentro para enfileirar invalido!");
 
