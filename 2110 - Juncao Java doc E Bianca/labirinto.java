@@ -7,7 +7,7 @@ public class labirinto
 {
 	char[][] labirinto;
 
-    int TotalLinha;
+        int TotalLinha;
 	int TotalColuna;
 	char parede;
 	char espaco;
@@ -16,6 +16,13 @@ public class labirinto
 	int  posicaoInicialColuna;
 	int  posicaoFinalLinha;
 	int  posicaoFinalColuna;
+	int linhaValida;
+	int colunaValida;
+	int linhaValida2;  // Variaveis que pegaram os devidos valor e que serao armazenados na Fila
+	int colunaValida2; // Estes seram correspondes as coordenadas validas no labirinto
+        int linhaValida3;
+	int colunaValida3;
+
 
 /**
 * Construtor dos atributos da classe
@@ -151,13 +158,7 @@ public int PosicaoFinalLinha(){
 public boolean validaPosicao(int linha, int coluna)
 {
 	boolean posicaoEValida = false; //inicializando com false
-	//int linhaValida  = 0; //questao de iniciacao
-	//int colunaValida = 0;
-	//int linhaValida2 = 0; //Variaveis que pegaram os devidos valor e que serao armazenados na Fila
-	//int colunaValida2 = 0;
-	//int linhaValida3  = 0;
-	//int colunaValida3 = 0;
-
+	
 	linha =  linha - 1; //linha anterior a passada no parametro, mas na mesma coluna
 	if(this.labirinto[linha][coluna] == this.parede)
 	{
@@ -169,8 +170,8 @@ public boolean validaPosicao(int linha, int coluna)
 	{
 		posicaoEValida = true;
 		System.out.println(linha+", "+coluna+" : Ha espaco");
-		//linhaValida  = linha-1;
-		//colunaValida = coluna;
+		this.linhaValida  = linha;
+		this.colunaValida = coluna;
 
   	}
 	coluna = coluna +1; //teremos a mesma linha da atual, mas levando em conta que a coluna e a seguinte
@@ -186,24 +187,28 @@ public boolean validaPosicao(int linha, int coluna)
 	{
 		posicaoEValida = true;
 		System.out.println(linha+" , "+coluna+" : Ha espaco");
-		//linhaValida2   = linha;
-		//colunaValida2  = coluna+1;
+		this.linhaValida2   = linha;
+		this.colunaValida2  = coluna;
+		
 	}
 
 	linha  = linha + 1;  //linha sucessora da armazena em atual
 	coluna = coluna - 1; //e na coluna anterior a passada como parametro, esgotando assim as possibilades
+	
        if(this.labirinto[linha][coluna] == this.parede)
        {
 		posicaoEValida = false;
 		System.out.println(linha+", "+coluna+" : Ha parede");
        }
+	
        if(this.labirinto[linha][coluna] == this.espaco)
        {
 
 		posicaoEValida = true;
 		System.out.println(linha+" , "+coluna+" : Ha espaco");
-	        //linhaValida3  = linha+1;
- 	        //colunaValida3 = coluna;
+	        this.linhaValida3  = linha;
+		this.colunaValida3 = coluna;
+	
        }
 	 return posicaoEValida;
 }
@@ -220,7 +225,7 @@ public boolean validaPosicao(int linha, int coluna)
 
 
 	 if(validaPosicao(linha,coluna)){  // Valida se a posicao não é parede.
-	 //se nao é parede this.labirinto da posicao recebera this.passo
+				 	   //se nao é parede this.labirinto da posicao recebera this.passo
 
 		this.labirinto[linha][coluna] = this.passo;
 
@@ -229,17 +234,18 @@ public boolean validaPosicao(int linha, int coluna)
 		{
 			for(int c = 0; c < this.TotalColuna; c++)
 			{
-		       	System.out.print(this.labirinto[l][c]);
-		    }
+		       		System.out.print(this.labirinto[l][c]);
+		    	}
 
 			System.out.println("");
 		}
 
-     }
-	  else{
+   	  }
+	  else
+	  {
 
  	 	throw new Exception("Posicao Inválida");
-	 }
+	  }
 
    }
 
@@ -286,7 +292,7 @@ public boolean validaPosicao(int linha, int coluna)
 	  if(labirinto[linha][coluna] == this.parede)
 	  {
 	    Evalida = false;
-      }
+     	 }
 	  else
 	  {
 	  	Evalida = true;
@@ -294,7 +300,5 @@ public boolean validaPosicao(int linha, int coluna)
 
 	 return Evalida;
   }
-
-
 
 }
