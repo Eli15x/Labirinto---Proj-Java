@@ -56,7 +56,7 @@ public class Pilha<X>
      for(int i = 0; i <= this.topo; i++)
          novoVet[i] = this.vetor[i];
 
-    this.vetor = novoVet;
+     this.vetor = novoVet;
 
   }
 
@@ -138,15 +138,15 @@ public class Pilha<X>
 
      Pilha pil = (Pilha)obj;
 
-    if(!(this.topo == (pil.topo)))
-      return false;
+   	 if(!(this.topo == (pil.topo)))
+      	return false;
 
-    if(!(this.taxaDeCrescimento == (pil.taxaDeCrescimento)))
-      return false;
+   	 if(!(this.taxaDeCrescimento == (pil.taxaDeCrescimento)))
+      	return false;
 
-    for(int i = 0; i<= this.topo; i++)
-     if(!(this.vetor[i].equals(pil.vetor[i])))
-      return false;
+   	 for(int i = 0; i<= this.topo; i++)
+    	if(!(this.vetor[i].equals(pil.vetor[i])))
+      		return false;
 
     return true;
  }
@@ -160,8 +160,8 @@ public class Pilha<X>
 
 	 ret += " Vetor:{";
 
-   for(int i = 0 ; i <= this.vetor.length-1;i++)
-         ret += this.vetor[i] +",";
+  	 for(int i = 0 ; i <= this.vetor.length-1;i++)
+         ret += this.vetor[i] + (i!=this.vetor.length?",":"");
 
      ret += "}  }";
 

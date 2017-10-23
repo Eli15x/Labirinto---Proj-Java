@@ -68,8 +68,8 @@ public class Fila<X>
 
    private void ColocarNoInicio(X x)
    {
-   	this.Controlador++;
-	this.vetor[Controlador] = x;
+   		this.Controlador++;
+		this.vetor[Controlador] = x;
 
     	if(Controlador == this.inicio-1)
     	{
@@ -80,29 +80,25 @@ public class Fila<X>
 
    public void enfileire(X x) throws Exception
    {
-   	  if(x==null)
-   	  	throw new Exception("Paramentro para enfileirar invalido!");
+   	  	if(x==null)
+   	  		throw new Exception("Paramentro para enfileirar invalido!");
 
-      if(this.fim==this.vetor.length-1)
-      {
-   	  	if(this.inicio == 0)
-   	    {
-			this.cresca();
-			this.vetor[++this.fim] = x;
-	    }
-   	    else
-		  ColocarNoInicio(x);
+      	if(this.fim==this.vetor.length-1)
+      	{
+   	  		if(this.inicio == 0)
+   	    	{
+				this.cresca();
+				this.vetor[++this.fim] = x;
+	    	}
+   	    	else
+				ColocarNoInicio(x);
+      	}
+      	else
+      	{
+			this.vetor[++this.fim] = x; //aqui ele ja está atribuindo um novo valor para this.fim que é this.fim+1;
+	  	}
 
-
-      }
-      else
-      {
-		this.vetor[++this.fim] = x; //aqui ele ja está atribuindo um novo valor para this.fim que é this.fim+1;
-	  }
-
-
-
-   		this.qtd++;
+   	  this.qtd++;
    }
    // desenfileire sera um void ou X?
    public void desenfileire() throws Exception
@@ -126,8 +122,8 @@ public class Fila<X>
    {
    		String ret = "{";
 
-      for(int i = 0 ; i <= this.fim;i++)
-         ret += this.vetor[i] +",";
+        for(int i = 0 ; i <= this.fim;i++)
+        	 ret += this.vetor[i] + (i!=this.fim?",":"");
 
    		ret += "}";
 
