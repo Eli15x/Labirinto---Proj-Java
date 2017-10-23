@@ -1,7 +1,7 @@
 /**
  *
  * @author @u15164 @17171  @17165
- * Cria o labirinto instanciando as vari·veis realizando as verificaÁıes necess·rias
+ * Cria o labirinto instanciando as vari√°veis realizando as verifica√ß√µes necess√°rias
  */
 public class labirinto
 {
@@ -37,10 +37,10 @@ public labirinto(char[][] lab,int linha,int coluna){
 }
 
 /**
- * Faz as verificaÁıes necess·rias para os caracteres do labirinto
+ * Faz as verifica√ß√µes necess√°rias para os caracteres do labirinto
  * Encontra E (inicio) e S (fim) no percurso
- * @return - Returna true caso encontre, lanÁa excessao caso n„o
- * @throws Exception - Caso n„o encontre pede para o usu·rio verificar o arquivo escrito novamente.
+ * @return - Returna true caso encontre, lan√ßa excessao caso n√£o
+ * @throws Exception - Caso n√£o encontre pede para o usu√°rio verificar o arquivo escrito novamente.
  */
 
 public boolean ConferirCaracteres() throws Exception{
@@ -52,7 +52,7 @@ public boolean ConferirCaracteres() throws Exception{
 
 	while(aux != 0){
 
-		if(Contador == this.TotalLinha-1) //se for a segunda vez.... pois de uma linha com coluna sÛ irei consultar a primeira linha e a ultima
+		if(Contador == this.TotalLinha-1) //se for a segunda vez.... pois de uma linha com coluna s√≥ irei consultar a primeira linha e a ultima
 			aux = 0;
 
 		for(int coluna = 0; coluna <= this.TotalColuna-1;coluna++){
@@ -71,16 +71,16 @@ public boolean ConferirCaracteres() throws Exception{
         	}
 
    	 }
-      		 Contador = this.TotalLinha-1; 	  //ele estar· pegando a ultima linha que existe no labirinto -1 que È a ultima linha da minha matriz
+      		 Contador = this.TotalLinha-1; 	  //ele estar√° pegando a ultima linha que existe no labirinto -1 que √© a ultima linha da minha matriz
       						  //pois minha matriz inicia com 0
  }
 
 		aux = 2;       //voltando o aux para 0
-		Contador = 0;  //voltando Contador para 0 para ser usado no prÛximo while... que ser· usado para conferir
+		Contador = 0;  //voltando Contador para 0 para ser usado no pr√≥ximo while... que ser√° usado para conferir
 		               //as laterais da minha matriz.
 	  while(aux != 0){
 
-		if(Contador == this.TotalColuna-1) //se for a segunda vez.... pois  sÛ irei consultar a primeira coluna e a ultima... que s„o
+		if(Contador == this.TotalColuna-1) //se for a segunda vez.... pois  s√≥ irei consultar a primeira coluna e a ultima... que s√£o
 					           //minhas laterais onde posso encontrar E e S.
 		aux = 0;
 
@@ -100,20 +100,20 @@ public boolean ConferirCaracteres() throws Exception{
 	    }
 
        }
-   		   Contador = this.TotalColuna-1; //ele estar· pegando a ultima Coluna que existe no labirinto -1 que È a ultima linha da minha matriz
+   		   Contador = this.TotalColuna-1; //ele estar√° pegando a ultima Coluna que existe no labirinto -1 que √© a ultima linha da minha matriz
 	        				  //pois minha matriz inicia com 0
    }
     if((AchouS)&&(AchouE))
     	return true;
 
     else{
-	    throw new Exception ("N„o foi encontrado O caracter E ou S em seu Arquivo,porfavor certifique-se se seu arquivo est· digitado corretamente");
+	    throw new Exception ("N√£o foi encontrado O caracter E ou S em seu Arquivo,porfavor certifique-se se seu arquivo est√° digitado corretamente");
 	}
 }
 
 /**
  *
- * @return retorna posiÁ„o inicial da linha
+ * @return retorna posi√ß√£o inicial da linha
  */
 
  public int PosicaoInicialLinha(){
@@ -122,7 +122,7 @@ public boolean ConferirCaracteres() throws Exception{
 
 /**
  *
- * @return retorna posiÁ„o inicial da coluna
+ * @return retorna posi√ß√£o inicial da coluna
  */
 
  public int PosicaoInicialColuna(){
@@ -131,7 +131,7 @@ public boolean ConferirCaracteres() throws Exception{
 
 /**
  *
- * @return retorna posiÁ„o final da coluna
+ * @return retorna posi√ß√£o final da coluna
  */
 
 public int PosicaoFinalColuna(){
@@ -140,7 +140,7 @@ public int PosicaoFinalColuna(){
 }
 /**
  *
- * @return retorna posiÁ„o final da linha
+ * @return retorna posi√ß√£o final da linha
  */
 
 public int PosicaoFinalLinha(){
@@ -219,8 +219,8 @@ public boolean validaPosicao(int linha, int coluna)
 
 
 
-	 if(validaPosicao(linha,coluna)){  // Valida se a posicao n„o È parede.
-	 //se nao È parede this.labirinto da posicao recebera this.passo
+	 if(validaPosicao(linha,coluna)){  // Valida se a posicao n√£o √© parede.
+	 //se nao √© parede this.labirinto da posicao recebera this.passo
 
 		this.labirinto[linha][coluna] = this.passo;
 
@@ -235,12 +235,65 @@ public boolean validaPosicao(int linha, int coluna)
 			System.out.println("");
 		}
 
-     }else{
+     }
+	  else{
 
- 	 	throw new Exception("Posicao Inv·lida");
+ 	 	throw new Exception("Posicao Inv√°lida");
 	 }
 
    }
+
+  public int getLinhaValida1()
+  {
+	  return this.linhaValida;
+  }
+
+  public int getColunaValida1()
+  {
+	  return this.colunaValida;
+  }
+
+  public int getLinhaValida2()
+  {
+	  return this.linhaValida2;
+  }
+
+  public int getColunaValida2()
+  {
+  	  return this.colunaValida2;
+  }
+
+  public int getLinhaValida3()
+  {
+  	  return this.linhaValida3;
+  }
+
+  public int getColunaValida3()
+  {
+	 return this.colunaValida3;
+  }
+
+  public boolean posicaoValida(int linha, int coluna) throws Exception
+  {
+	  if(linha < 0 || linha > this.TotalLinha)
+	  	throw new Exception("Linha invalida :(");
+
+	  if(coluna < 0 || coluna > this.TotalColuna)
+	  	throw new Exception("Coluna invalida :(");
+
+	  boolean Evalida = false;
+
+	  if(labirinto[linha][coluna] == this.parede)
+	  {
+	    Evalida = false;
+      }
+	  else
+	  {
+	  	Evalida = true;
+	  }
+
+	 return Evalida;
+  }
 
 
 
