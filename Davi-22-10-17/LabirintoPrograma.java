@@ -84,10 +84,21 @@ public class LabirintoPrograma{
          Coord.setColuna(procedimentos.PosicaoInicialColuna()); // recebendo a coluna incial onde está S
          caminho.empilhe(Coord); //empilhará a primeira posicao
          
-         for(int coluna = 0;coluna<=3;coluna++){    
-         Coord.atual = Coord.getLinha(procedimentos.PosicaoInicialLinha());   
+         for(int coluna = 0;coluna<=3;coluna++){  
+         Coord.atual = Coord.getLinha(procedimentos.PosicaoInicialLinha()); 
          caminho.enfileire(Coord.atual);
          }
+         for(int coluna = 0;coluna>=-3;coluna--){  
+         Coord.atual = Coord.getLinha(procedimentos.PosicaoInicialLinha()); 
+         caminho.enfileire(Coord.atual);
+         }
+         for(int linha=0;linha>=-3;linha--){
+         Coord.atual = Coord.getColuna(procedimentos.PosicaoInicialColuna());
+         caminho.enfileire(Coord.atual);}
+         
+         for(int linha=0;linha<=3;linha++){
+         Coord.atual = Coord.getColuna(procedimentos.PosicaoInicialColuna());
+         caminho.enfileire(Coord.atual);}
          Coord.atual= '*'; 
          }
         
