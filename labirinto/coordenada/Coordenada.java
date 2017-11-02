@@ -1,9 +1,11 @@
-package coordenada;
+package labirintoprograma.labirinto.coordenada;
 
-public class Coordenada implements Cloneable
+public class Coordenada
 {
-    private int coluna;
-    private int linha;
+    protected int coluna;
+    protected int linha;
+    protected int colunaFinal;
+    protected int linhaFinal;
 
 
   public Coordenada(int coluna, int linha) throws Exception
@@ -16,7 +18,6 @@ public class Coordenada implements Cloneable
 
 	   this.coluna = coluna;
 	   this.linha  = linha;
-
    }
 
    public void setColuna(int Coluna)
@@ -24,9 +25,18 @@ public class Coordenada implements Cloneable
      	this.coluna = Coluna;
    }
 
+   public void setColunaFinal(int coluna)
+   {
+       this.colunaFinal = coluna;
+   }
+
+   public void setLinhaFinal(int linha)
+   {
+       this.linhaFinal = linha;
+   }
    public int getColuna()
    {
-	   	return this.coluna;
+        return this.coluna;
    }
 
    public void setLinha(int Linha)
@@ -39,6 +49,15 @@ public class Coordenada implements Cloneable
      	return this.linha;
    }
 
+   public int getLinhaFinal()
+   {
+       return this.linhaFinal;
+   }
+
+   public int getColunaFinal()
+   {
+       return this.colunaFinal;
+   }
 
    public String toString()
    {
@@ -82,33 +101,8 @@ public class Coordenada implements Cloneable
   		ret = ret*7  + new Integer(this.linha).hashCode();
   		ret = ret*5  + new Integer(this.coluna).hashCode();
 
-    	return ret;
-	}
-
-	public Coordenada(Coordenada modelo) throws Exception
-	{
-		if(modelo == null)
-			throw new Exception("Modelo passada e invalido");
-
-//		if/()
-
-
-		this.coluna = modelo.coluna;
-		this.linha  = modelo.coluna;
+            return ret;
 	}
 
 
-	public Object clone()
-	{
-		Coordenada ret = null;
-
-		try
-		{
-			ret = new Coordenada(this);
-		}
-		catch(Exception erro)
-		{} //ignoro, pois o this nunca é null
-
-		return ret;
-	}
 }

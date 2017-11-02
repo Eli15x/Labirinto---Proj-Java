@@ -1,84 +1,83 @@
-package fila;
+package labirintoprograma.labirinto.fila;
 
 import java.lang.reflect.*;
 
-public class Fila<X> implements Cloneable
+public class Fila<X>
 {
-	protected int inicio, fim, qtd,Controlador;
-	protected Object[] vetor;
-	protected float taxaDeCrescimento;
+    protected int inicio, fim, qtd,Controlador;
+    protected Object[] vetor;
+    protected float taxaDeCrescimento;     
 
 
    public Fila()
    {
-   		this.iniciacao();
+        this.iniciacao();
    }
 
-   private void  iniciacao()
+   protected void  iniciacao()
    {
-   		this.iniciacao(10);
-
+   	this.iniciacao(10);
    }
 
-   private void iniciacao(int tam)
+   protected void iniciacao(int tam)
    {
-   		this.iniciacao(tam,10/*por cento*/);
+   	this.iniciacao(tam,10/*por cento*/);
    }
 
-   private void iniciacao(int tam,float tc)
+   protected void iniciacao(int tam,float tc)
    {
-   		this.vetor  = new Object[tam];
-   		this.inicio = 0;
-   		this.fim    = -1;
-   		this.qtd    = 0;
-   		this.taxaDeCrescimento = tc;
-   		this.Controlador = -1;
+   	this.vetor  = new Object[tam];
+   	this.inicio = 0;
+   	this.fim    = -1;
+   	this.qtd    = 0;
+   	this.taxaDeCrescimento = tc;
+   	this.Controlador = -1;
    }
 
    public Fila(int tam) throws Exception
    {
-   		this.iniciacao(tam);
+   	this.iniciacao(tam);
    }
    public Fila(int tam, float tc) throws Exception
    {
-   	 	if(tam<=0)
-   	 		throw new Exception("Tamanho invalido!");
+   	if(tam<=0)
+            throw new Exception("Tamanho invalido!");
 
-   	 	if(tc<=0)
-   	 		throw new Exception("Taxa de crescimento invalida!");
+   	 if(tc<=0)
+            throw new Exception("Taxa de crescimento invalida!");
 
-   	 	this.iniciacao(tam,tc);
+   	 this.iniciacao(tam,tc);
    }
 
-   private void cresca()
+   protected void cresca()
    {
-		float multiplicador = (this.taxaDeCrescimento/100) +1;
-		int tamNovo         = Math.round(this.vetor.length*multiplicador);
+        float multiplicador = (this.taxaDeCrescimento/100) +1;
+        int tamNovo         = Math.round(this.vetor.length*multiplicador);
 
-		Object[] novoVet = new Object[tamNovo];
+        Object[] novoVet = new Object[tamNovo];
 
-		for(int i=0; i<=this.fim;i++) //Usar this.fim ou this.vetor.length?
-		    novoVet[i] = this.vetor[i]; // no novo vetor fazer com que a minha posicao zero receba o da ultima
+        for(int i=0; i<=this.fim;i++) //Usar this.fim ou this.vetor.length?
+            novoVet[i] = this.vetor[i]; // no novo vetor fazer com que a minha posicao zero receba o da ultima
 
-		this.vetor = novoVet; //Atualizar o meu vetor com o tamanho aumentado
+        this.vetor = novoVet; //Atualizar o meu vetor com o tamanho aumentado
    }
 
- public  boolean vazia()
-   {
-   		if(this.qtd==0)
-   			return true;
+   public boolean vazia()
+    {
+        if(this.qtd==0)
+                return true;
 
-   		return false;
+        return false;
    }
 
-   private void ColocarNoInicio(X x)
+   protected void ColocarNoInicio(X x)
    {
    		this.Controlador++;
 		this.vetor[Controlador] = x;
 
-    	if(Controlador == this.inicio)
+    	if(Controlador == this.inicio-1)
     	{
-   			this.inicio = 0;
+                this.inicio = 0;
     		this.Controlador = -1;
    		}
    }
@@ -88,21 +87,17 @@ public class Fila<X> implements Cloneable
    	  	if(x==null)
    	  		throw new Exception("Paramentro para enfileirar invalido!");
 
-      	if(this.fim==this.vetor.length-1)
-      	{
-   	  		if(this.inicio == 0)
-   	    	{
-				this.cresca();
-				this.vetor[++this.fim] = x;
+      	if(this.fim==this.vetor.length-1){      	
+                if(this.inicio == 0){
+                this.cresca();
+                this.vetor[++this.fim] = x;
 	    	}
    	    	else
-				ColocarNoInicio(x);
-				//this.vetor[this.inicio] = x;
+		ColocarNoInicio(x);
       	}
-      	else
-      	{
-			this.vetor[++this.fim] = x; //aqui ele ja está atribuindo um novo valor para this.fim que é this.fim+1;
-	  	}
+      	else{
+      	this.vetor[++this.fim] = x; //aqui ele ja estï¿½ atribuindo um novo valor para this.fim que ï¿½ this.fim+1;
+	}
 
    	  this.qtd++;
    }
@@ -111,7 +106,6 @@ public class Fila<X> implements Cloneable
    {
    		if(this.vazia())
    			throw new Exception("Nao ha como remover, pois nao ha conteudo!");
-
    		//inicio recebe null e aumenta o inicio
    		this.vetor[inicio++] = null;
    		this.qtd--;
@@ -188,64 +182,59 @@ public class Fila<X> implements Cloneable
    		return true;
    }
 
-   private X meuCloneDeX(X x)
+ protected X meuCloneDeX(X x)
    {
-	 X ret = null;
+        X ret = null;
 
-	 try
-	 {
-       Class<?> classe = x.getClass();
-       Class<?>[] tipoParametroFormal = null; //null porque no clone nao ha parametro
-       Method metodo = classe.getMethod("clone", tipoParametroFormal);
-       Object[] parametroReal = null; //null tambem porque nao ha parametros no clone
-       ret = (X)metodo.invoke(x,parametroReal);
-	 }
-	 catch(Exception erro1)
-	 {}
+    try
+    {
+      Class<?> classe = x.getClass();
+      Class<?>[] tipoParametroFormal = null; //null porque no clone nao ha parametro
+      Method metodo = classe.getMethod("clone", tipoParametroFormal);
+      Object[] parametroReal = null; //null tambem porque nao ha parametros no clone
+      ret = (X)metodo.invoke(x,parametroReal);
+    }
+    catch(Exception erro1)
+    {}
 
-	 return ret;
-   }
-
+    return ret;
+   }  
 
    // Na main Pilha<integer> b = new Pilha<Integer>a.clone();
    // Ou Pilha<integer> b = new Pilha<integer>(a);
    public Fila (Fila modelo) throws Exception
    {
-   		if(modelo == null)
-   			throw new Exception("Modelo passado e invalido");
+        if(modelo == null)
+                throw new Exception("Modelo passado e invalido");
 
-   		this.vetor  = new Object[modelo.vetor.length];
+        this.vetor  = new Object[modelo.vetor.length];
 
-   		for(int i = 0; i <= this.fim; i++)
-   		 if(this.vetor[i] instanceof Cloneable)
-   		  this.vetor[i] = this.meuCloneDeX((X)modelo.vetor[i]);
-   		 else
-
-   		this.vetor[i] = modelo.vetor[i];
-
-   		// atribuir agora o valor das variaveis
+        for(int i = 0; i <= this.fim; i++)
+         if(this.vetor[i] instanceof Cloneable)
+             this.vetor[i] = this.meuCloneDeX((X)modelo.vetor[i]);
+         else
+            this.vetor[i] = modelo.vetor[i];
+        
+   	// atribuir agora o valor das variaveis
         this.inicio   = modelo.inicio;
         this.fim      = modelo.fim;
         this.qtd      = modelo.qtd;
         this.taxaDeCrescimento = modelo.taxaDeCrescimento;
-
-
-
    }
 
    public Object clone()
    {
-   		Fila ret = null;
+    Fila ret = null;
 
-   		try
-   		{
-   			ret = new Fila(this);
+    try
+    {
+            ret = new Fila(this);
 
-   		}
-   		catch(Exception erro)
-   		{} //ignoro, pois o this nunca e null
+    }
+    catch(Exception erro)
+    {} //ignoro, pois o this nunca e null
 
-   	return ret;
+    return ret;
    }
 
-}
+ }

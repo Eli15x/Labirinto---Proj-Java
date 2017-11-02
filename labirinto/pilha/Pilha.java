@@ -1,10 +1,10 @@
-package pilha;
+package labirintoprograma.labirinto.pilha;
 
 import java.lang.reflect.*;
 
-public class Pilha<X> implements Cloneable
+public class Pilha<X>
 {
-   //O usuario só pode mecher com o topo
+   //O usuario so pode mecher com o topo
    protected int topo; //Controlara o tamanho da pilha
    protected Object[] vetor;
    protected float taxaDeCrescimento;
@@ -99,14 +99,14 @@ public class Pilha<X> implements Cloneable
        if(this.topo == this.vetor.length-1)
            this.cresca();
 
-      // if(x instanceof Cloneable)
-       //   this.vetor[++topo] = this.meuCloneDeX(x);
+     if(x instanceof Cloneable)
+        this.vetor[++topo] = this.meuCloneDeX((X)x);
 
-    //  else
+     else
          this.vetor[++topo] = x;
   }
 
- /*private X meuCloneDeX(X x)
+ private X meuCloneDeX(X x)
  {
 	 X ret = null;
 
@@ -126,8 +126,8 @@ public class Pilha<X> implements Cloneable
 	 {}
 
 	 return ret;
- }*/
-
+ }
+ 
  public boolean equals(Object obj)
  {
 	 if(obj==null)
@@ -158,17 +158,15 @@ public class Pilha<X> implements Cloneable
  {
 	 String ret = "{";
 
-	// ret += "Topo vale :"+ this.topo;
-	// ret += "Taxa De Crescimento : "+ this.taxaDeCrescimento;
+	 ret += "Topo vale :"+ this.topo;
+	 ret += "Taxa De Crescimento : "+ this.taxaDeCrescimento;
 
-	// ret += " Vetor:{";
+	 ret += " Vetor:{";
 
-	   ret += this.vetor[this.topo];
+  	 for(int i = 0 ; i <= this.vetor.length-1;i++)
+         ret += this.vetor[i] + (i!=this.vetor.length?",":"");
 
-  	// for(int i = 0 ; i <= this.vetor.length-1;i++)
-      //   ret += this.vetor[i] + (i!=this.vetor.length?",":"");
-
-     ret +=  "}";
+     ret += "}  }";
 
 	 return ret;
 
@@ -194,10 +192,10 @@ public class Pilha<X> implements Cloneable
     this.vetor = new Object[modelo.vetor.length];
 
      for(int i = 0; i <= this.topo; i++)
-       /*if(this.vetor[i] instanceof Cloneable) // Se ele na main fez uma instancia clone ao inves de passar direto o modelo na instancia
-          this.vetor[i] = this.meuCloneDeX(modelo.vetor[i]);
+       if(this.vetor[i] instanceof Cloneable) // Se ele na main fez uma instancia clone ao inves de passar direto o modelo na instancia
+          this.vetor[i] = this.meuCloneDeX((X)modelo.vetor[i]);
 
-     else*/
+       else
            this.vetor[i]= modelo.vetor[i];
 
      this.topo = modelo.topo;
