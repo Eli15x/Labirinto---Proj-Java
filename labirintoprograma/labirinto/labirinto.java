@@ -1,4 +1,4 @@
-package labirintoprograma.labirinto;
+﻿package labirintoprograma.labirinto;
 
 import java.io.*;
 import java.io.BufferedReader;
@@ -183,7 +183,7 @@ for(int i=0; i<this.totalLinha; i++)
     {
         if(this.labirinto[i][j] == 'E')
         {
-           this.atual = new Coordenada(i, j);               
+           this.atual = new Coordenada(j,i);               
         }          
 }
 }
@@ -204,7 +204,7 @@ public void resolverLab() throws Exception
         this.fila = new Fila<>(3);        
         this.validaPosicoes();
         
-        while(!(this.fila.vazia())){           
+        while(situacao == "Progressiva"){           
             this.atual = this.fila.getFila();
             this.fila.desenfileire();            
             this.colocarPasso();
@@ -213,11 +213,14 @@ public void resolverLab() throws Exception
 
             this.fila = new Fila<>(3); //instanciando novamente pois desenfileirei
             this.validaPosicoes();
-            }      
+            
+            if(this.fila.vazia())
+            	situacao = "Regressiva";
+            }    
               
       
         
-        while(this.fila.vazia()){
+        while(situacao == "Regressiva"){
             this.atual = this.caminho.getTopo();
             this.caminho.desempilhe();
             this.tirarPasso();

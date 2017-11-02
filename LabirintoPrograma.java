@@ -66,7 +66,7 @@ public class LabirintoPrograma {
        
     }   
     catch(FileNotFoundException erro2)
-    { System.out.println("Não foi achado o arquivo.");}
+    { System.out.println("Nao foi achado o arquivo.");}
 
     catch(Exception erro)
     { System.out.println("Labirinto errado");}
