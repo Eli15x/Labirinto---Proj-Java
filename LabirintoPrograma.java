@@ -14,7 +14,7 @@ import labirintoprograma.labirinto.labirinto;
 
 /**
  *
- * @author 17165, 17171 e 16
+ * @author 17165, 17171 e 15164
  */
 public class LabirintoPrograma {
  public static void main(String[] args) throws IOException
