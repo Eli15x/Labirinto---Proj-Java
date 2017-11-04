@@ -2,16 +2,10 @@ package labirintoprograma.labirinto.pilha;
 
 import java.lang.reflect.*;
 
-/**
- * Classe com o proposio de instanciar e possibilitar a criaçao de pilha 
- * Classe generica
- * @author @u15164 @17171  @17165 
- * @param <X> sera o valor atribuido a classe pilha, ja que a mesma e generica
- */
 public class Pilha<X>
 {
    //O usuario so pode mecher com o topo
-   protected int topo; 
+   protected int topo; //Controlara o tamanho da pilha
    protected Object[] vetor;
    protected float taxaDeCrescimento;
 
@@ -69,12 +63,6 @@ public class Pilha<X>
      this.vetor = novoVet;
 
   }
-  /**
-   * 
-   * @return retorna o que se encontra no topo da pilha
-   * @throws Exception caso nao ha elementos na pilha, logo nao se tem o que retornar
-   * 
-   */
 
   public X getTopo() throws Exception
   {
@@ -84,12 +72,6 @@ public class Pilha<X>
 
 	  return (X)this.vetor[topo];
   }
-  
-  /**
-   * 
-   * @return retorna o que desempilhou. 
-   * @throws Exception caso a pilha ja esteja vazia, lançando assim a excessao.
-   */
   public X desempilhe() throws Exception
   {
 	  if(this.vazia())
@@ -100,10 +82,6 @@ public class Pilha<X>
 
 	  return aux;
   }
-  
-  /**
-   * @return retorna true ou false, caso esteja vazia ou nao
-   * */
   public boolean vazia()
   {
 	 if (this.topo == -1) //Posicao -1 indica que nao ha nada
@@ -111,12 +89,6 @@ public class Pilha<X>
 
      return false;
   }
-  
-  /**
-   * 
-   * @param x parametro do tipo X que serve como valor a empilhar
-   * @throws Exception caso o valor seja nulo, lançando assim a excessao
-   */  
   public void empilhe(X x) throws Exception
   {
 	  //for(int i = 0; i <= this.topo; i++)
@@ -156,11 +128,6 @@ public class Pilha<X>
 	 return ret;
  }
  
- /**
-  * Método que realiza a comparação entre objetos
-  * @param obj vindo da classe Object servindo para compararmos objetos
-  * @return retorna true caso os objetos sejam de fato semelhantes
-  */ 
  public boolean equals(Object obj)
  {
 	 if(obj==null)
@@ -187,10 +154,6 @@ public class Pilha<X>
     return true;
  }
 
- /**
-  * @return retorna a string ret para auxiliar na exibição 
-  */
- 
  public String toString()
  {
 	 String ret = "{";
@@ -208,29 +171,19 @@ public class Pilha<X>
 	 return ret;
 
  }
- 
- /**
- * Organiza os elementos da classe
- * @return retorna a variavel ret calculada no método
- */
  public int HashCode()
  {
 	 int ret = 23;
 
-	 ret = ret * 3 /*primo*/ + new Integer(this.topo).hashCode();
+	 ret = ret * 3 /*primo*/ + new Integer (this.topo).hashCode();
 
 	 for(int i = 0; i <= this.topo; i++)
         ret = ret * 3 + this.vetor[i].hashCode();
 
     return ret;
  }
-
- /**
-  * Construtor de cópia para fazermos cópias e evitar que usuários causem acidentes na classe
-  * @param modelo representa a cópia da classe, o que sera copiado 
-  * @throws Exception Caso modelo seja nulo, lança a excessao sobre seu valor invalido
-  */
- 
+ // Na main Pilha<integer> b = new Pilha<Integer>a.clone();
+ // Ou Pilha<integer> b = new Pilha<integer>(a);
  public Pilha (Pilha modelo) throws Exception
  {
     if(modelo==null)
@@ -248,10 +201,6 @@ public class Pilha<X>
      this.topo = modelo.topo;
      this.taxaDeCrescimento = modelo.taxaDeCrescimento;
  }
- /**
-  * Metodo para clonar a classe fila
-  * @return retorna a variavel ret do tipo fila clonada
-  */
 
  public Object clone()
  {

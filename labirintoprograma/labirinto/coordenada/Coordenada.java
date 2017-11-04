@@ -1,8 +1,5 @@
 package labirintoprograma.labirinto.coordenada;
-/**
- * Classe com o proposio de instanciar e possibilitar a criaçao de coordenadas
- * @author @u15164 @17171  @17165
- */
+
 public class Coordenada
 {
     protected int coluna;
@@ -10,10 +7,6 @@ public class Coordenada
     protected int colunaFinal;
     protected int linhaFinal;
 
-/**
- * @param parametro passado na instanciacao
- * @throws se os valores passados forem menores que zero
- * */
 
   public Coordenada(int coluna, int linha) throws Exception
    {
@@ -26,49 +19,46 @@ public class Coordenada
 	   this.coluna = coluna;
 	   this.linha  = linha;
    }
-  
-  /**
-  *
-  * @param Coluna recebe a coluna para ser definida
-  * @throws Exception caso coluna não esteja nos padroes lança excessao
-  */
+
    public void setColuna(int Coluna)
    {
      	this.coluna = Coluna;
    }
 
-  /**
-   *
-   * @return retorna coluna
-   */
+   public void setColunaFinal(int coluna)
+   {
+       this.colunaFinal = coluna;
+   }
+
+   public void setLinhaFinal(int linha)
+   {
+       this.linhaFinal = linha;
+   }
    public int getColuna()
    {
         return this.coluna;
    }
-   /**
-   *
-   * @param Linha recebe a linha para ser definida
-   * @throws Exception caso coluna não esteja nos padroes lança excessao
-   */
 
    public void setLinha(int Linha)
    {
        	this.linha = Linha;
    }
-   
-   /**
-   *
-   * @return retorna linha
-   */
+
    public int getLinha()
    {
      	return this.linha;
    }
-   
-   /**
-   *
-   * @return retorna a string ret que exibe devidamente os valores da Classe Coordenada
-   */
+
+   public int getLinhaFinal()
+   {
+       return this.linhaFinal;
+   }
+
+   public int getColunaFinal()
+   {
+       return this.colunaFinal;
+   }
+
    public String toString()
    {
 		String ret;
@@ -81,12 +71,7 @@ public class Coordenada
 
   		return ret;
 	}
-   
-   /**
-   *
-   * @param obj parametro do tipo Object que permite a comparação entre objetos
-   * @return retorna true caso sejam de fato semelhantes os objetos
-   */
+
 	public boolean equals(Object obj)
 	{
 		if(this == obj)
@@ -109,10 +94,6 @@ public class Coordenada
    		return true;
 	}
 
-	/**
-	 *
-	 * @return retorna o int que serviu para organização dos elementos através dos calculos
-	 */
 	public int hashCode()
 	{
 		int ret = 77;
@@ -122,37 +103,6 @@ public class Coordenada
 
             return ret;
 	}
-	/**
-	 * Constructor de Copia
-	 * @param modelo sera um obj Coordenada que sera copiado
-	 * @throws lanca excecao, quando seu parametro nao e devidamente valido, ou seja null
-	 * */
-	public Coordenada (Coordenada modelo) throws Exception
-	{
-		  if(modelo==null)
-		      throw new Exception("Modelo invalido");
 
 
-		 this.coluna = modelo.coluna;
-	     this.linha = modelo.linha;
-	}
-	/**
-	 * @return retornara a copia do this, sendo assim usando o constructor de copia
-	 * */
-
-	public Object clone()
-	{
-		 Coordenada ret = null;
-
-		 try
-		 {
-	        ret = new Coordenada(this);
-		 }
-		 catch(Exception erro)
-		 {}
-
-		return ret;
-	}
-
-	
 }
