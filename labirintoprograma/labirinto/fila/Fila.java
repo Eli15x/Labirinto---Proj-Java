@@ -2,13 +2,20 @@ package labirintoprograma.labirinto.fila;
 
 import java.lang.reflect.*;
 
+/**
+ *  Classe com o proposio de instanciar e possibilitar a criaçao de Filas
+ * @author @u15164 @17165  @17171 
+ * @param <X> recebe o sua classificacao, pois a classe e generica
+ */
 public class Fila<X>
 {
     protected int inicio, fim, qtd,Controlador;
     protected Object[] vetor;
     protected float taxaDeCrescimento;     
 
-
+   /**
+    * Constructor da classe, no qual na se passa parametros
+    * */ 
    public Fila()
    {
         this.iniciacao();
@@ -33,11 +40,23 @@ public class Fila<X>
    	this.taxaDeCrescimento = tc;
    	this.Controlador = -1;
    }
+   
+   /** 
+    * @param tam passa o tamanho do vetor
+    * @throws Exception caso o tamanho não seja válido lança excessao 
+    */
 
    public Fila(int tam) throws Exception
    {
-   	this.iniciacao(tam);
-   }
+	   this.iniciacao(tam);
+   }   
+
+   /**
+    * 
+    * @param tam passa o tamanho do vetor
+    * @param tc  passa a taxa de crescimento
+    * @throws Exception caso o tamanho seja inválido ou a taxa de crescimento lançando excessao
+    */
    public Fila(int tam, float tc) throws Exception
    {
    	if(tam<=0)
@@ -61,7 +80,10 @@ public class Fila<X>
 
         this.vetor = novoVet; //Atualizar o meu vetor com o tamanho aumentado
    }
-
+   
+   /**
+    * @return retorna falso caso exista algo na variavel diferente de 0
+    */
    public boolean vazia()
     {
         if(this.qtd==0)
@@ -81,7 +103,11 @@ public class Fila<X>
     		this.Controlador = -1;
    		}
    }
-
+   
+   /** 
+    * @param x valor para ser enfileirado
+    * @throws Exception caso seja nulo lançando a excessao
+    */   
    public void enfileire(X x) throws Exception
    {
    	  	if(x==null)
@@ -101,7 +127,12 @@ public class Fila<X>
 
    	  this.qtd++;
    }
-   // desenfileire sera um void ou X?
+   
+  /**
+   * Metodo que desenfileira o que esta no inicio da fila
+   * @throws lanca-se excecao quando a fila ja se encontra vazia, logo nao a o que desenfileirar
+   * */
+   
    public void desenfileire() throws Exception
    {
    		if(this.vazia())
@@ -111,6 +142,10 @@ public class Fila<X>
    		this.qtd--;
    }
 
+   /**
+    * @return retorna o elemento X da qual a classe Generica e.
+    * @throws Exception  caso nao exista fila a ser retornada lançando excessao 
+    */
    public X getFila() throws Exception
    {
    		if(this.vazia())
@@ -118,7 +153,10 @@ public class Fila<X>
 
         return (X)this.vetor[inicio];
    }
-
+   
+   /**
+    * @return retorna a string ret para auxiliar na exibição 
+    */
    public String toString()
    {
    		String ret = "{";
@@ -130,7 +168,11 @@ public class Fila<X>
 
    		return ret;
    }
-
+   
+   /**
+    * Organiza os elementos da classe
+    * @return retorna a variavel ret calculada no método
+    */
    public int hashCode()
    {
    		int ret = 9;
@@ -150,6 +192,11 @@ public class Fila<X>
    	    return ret;
    }
 
+   /**
+    * Método que realiza a comparação entre objetos
+    * @param obj vindo da classe obj servindo para compararmos objetos
+    * @return retorna true caso os objetos sejam comparáveis
+    */
    public boolean equals(Object obj)
    {
    		if(obj==null)
@@ -199,9 +246,12 @@ public class Fila<X>
 
     return ret;
    }  
-
-   // Na main Pilha<integer> b = new Pilha<Integer>a.clone();
-   // Ou Pilha<integer> b = new Pilha<integer>(a);
+ 
+ /**
+  * Construtor de cópia para fazermos cópias e evitar que usuários causem acidentes na classe
+  * @param modelo representa a cópia da classe 
+  * @throws Exception Caso modelo seja nulo, lança a excessao sobre seu valor inválido
+  */
    public Fila (Fila modelo) throws Exception
    {
         if(modelo == null)
@@ -221,7 +271,11 @@ public class Fila<X>
         this.qtd      = modelo.qtd;
         this.taxaDeCrescimento = modelo.taxaDeCrescimento;
    }
-
+   
+   /**
+    * Metodo para clonar a classe fila
+    * @return retorna a variavel ret do tipo fila clonada
+    */
    public Object clone()
    {
     Fila ret = null;
